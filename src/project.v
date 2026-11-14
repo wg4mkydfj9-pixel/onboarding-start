@@ -25,11 +25,11 @@ module tt_um_uwasic_onboarding_kohan (
   wire [7:0] pwm_duty_cycle;
 
   // Instantiate the PWM module
-  pwm_peripheral pwm_peripheral_inst (
+  pwm_peripheral spi_peripheral (
     .clk(clk),
     .rst_n(rst_n),
-    .en_reg_out_7_0(en_reg_out_7_0),
-    .en_reg_out_15_8(en_reg_out_15_8),
+    .en_reg_out_7_0(en_reg_out),
+      .en_reg_out_15_8(en_reg_out2),
     .en_reg_pwm_7_0(en_reg_pwm_7_0),
     .en_reg_pwm_15_8(en_reg_pwm_15_8),
     .pwm_duty_cycle(pwm_duty_cycle),
@@ -39,7 +39,7 @@ module tt_um_uwasic_onboarding_kohan (
   wire _unused = &{ena, ui_in[7:3], uio_in, 1'b0};
 
   // All output pins must be assigned. If not used, assign to 0.
-  assign uo_out  = ui_in + uio_in;  // Example: ou_out is the sum of ui_in and uio_in
+ // assign uo_out  = ui_in + uio_in;  // Example: ou_out is the sum of ui_in and uio_in
   assign uio_out = 0;
   assign uio_oe  = 0;
 
